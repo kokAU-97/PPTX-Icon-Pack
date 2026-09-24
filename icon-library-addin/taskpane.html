@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>My Icon Library</title>
+  <link rel="stylesheet" href="taskpane.css" />
+  <script src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"></script>
+</head>
+<body>
+  <div id="app" class="app" hidden>
+
+    <header class="topbar">
+      <div class="brand">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <h1>My Icons</h1>
+      </div>
+      <label class="btn btn-primary" for="file-input">
+        + Add icons
+        <input id="file-input" type="file" accept=".svg,.png,.jpg,.jpeg" multiple hidden />
+      </label>
+    </header>
+
+    <div class="toolbar">
+      <div class="search">
+        <input id="search-input" type="search" placeholder="Search your icons" aria-label="Search your icons" />
+      </div>
+      <button id="clear-all-btn" class="btn btn-ghost" title="Remove every icon from the library">Clear all</button>
+    </div>
+
+    <p id="status" class="status" role="status" aria-live="polite"></p>
+
+    <main id="grid" class="grid" aria-label="Icon library"></main>
+
+    <div id="empty-state" class="empty-state" hidden>
+      <div class="empty-glyph" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.6">
+          <rect x="3" y="3" width="7" height="7" rx="1.5" />
+          <rect x="14" y="3" width="7" height="7" rx="1.5" />
+          <rect x="3" y="14" width="7" height="7" rx="1.5" />
+          <rect x="14" y="14" width="7" height="7" rx="1.5" />
+        </svg>
+      </div>
+      <p class="empty-title">Your library is empty</p>
+      <p class="empty-body">Add SVG or PNG icons once — they'll stay here for every future presentation on this computer.</p>
+    </div>
+
+    <div id="no-results" class="empty-state" hidden>
+      <p class="empty-title">No icons match "<span id="no-results-query"></span>"</p>
+    </div>
+  </div>
+
+  <div id="loading" class="loading">Loading your icon library…</div>
+
+  <script src="taskpane.js"></script>
+</body>
+</html>

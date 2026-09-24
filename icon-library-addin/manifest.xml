@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0"
+           xmlns:ov="http://schemas.microsoft.com/office/taskpaneappversionoverrides"
+           xsi:type="TaskPaneApp">
+
+  <!-- IMPORTANT: This GUID must stay the same across updates, but must be unique to your add-in. -->
+  <Id>5a77c7c0-3fec-4f9d-9acb-815d4ee99cee</Id>
+  <Version>1.0.0.0</Version>
+  <ProviderName>My Icon Library</ProviderName>
+  <DefaultLocale>en-US</DefaultLocale>
+  <DisplayName DefaultValue="My Icon Library" />
+  <Description DefaultValue="Insert icons from your own icon library into PowerPoint slides, the same way as the built-in icon gallery." />
+  <IconUrl DefaultValue="https://YOUR_HOST_HERE/assets/icon-32.png" />
+  <HighResolutionIconUrl DefaultValue="https://YOUR_HOST_HERE/assets/icon-80.png" />
+  <SupportUrl DefaultValue="https://YOUR_HOST_HERE" />
+
+  <AppDomains>
+    <AppDomain>https://YOUR_HOST_HERE</AppDomain>
+  </AppDomains>
+
+  <Hosts>
+    <Host Name="Presentation" />
+  </Hosts>
+
+  <DefaultSettings>
+    <SourceLocation DefaultValue="https://YOUR_HOST_HERE/taskpane.html" />
+  </DefaultSettings>
+
+  <Permissions>ReadWriteDocument</Permissions>
+
+  <VersionOverrides xmlns="http://schemas.microsoft.com/office/taskpaneappversionoverrides" xsi:type="VersionOverridesV1_0">
+    <Hosts>
+      <Host xsi:type="Presentation">
+        <DesktopFormFactor>
+          <GetStarted>
+            <Title resid="GetStarted.Title" />
+            <Description resid="GetStarted.Description" />
+            <LearnMoreUrl resid="GetStarted.LearnMoreUrl" />
+          </GetStarted>
+          <FunctionFile resid="Commands.Url" />
+          <ExtensionPoint xsi:type="PrimaryCommandSurface">
+            <OfficeTab id="TabHome">
+              <Group id="IconLibraryGroup">
+                <Label resid="IconLibraryGroup.Label" />
+                <Icon>
+                  <bt:Image size="16" resid="Icon.16x16" />
+                  <bt:Image size="32" resid="Icon.32x32" />
+                  <bt:Image size="80" resid="Icon.80x80" />
+                </Icon>
+                <Control xsi:type="Button" id="TaskpaneButton">
+                  <Label resid="TaskpaneButton.Label" />
+                  <Supertip>
+                    <Title resid="TaskpaneButton.Label" />
+                    <Description resid="TaskpaneButton.Tooltip" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.16x16" />
+                    <bt:Image size="32" resid="Icon.32x32" />
+                    <bt:Image size="80" resid="Icon.80x80" />
+                  </Icon>
+                  <Action xsi:type="ShowTaskpane">
+                    <TaskpaneId>IconLibraryTaskpane</TaskpaneId>
+                    <SourceLocation resid="Taskpane.Url" />
+                  </Action>
+                </Control>
+              </Group>
+            </OfficeTab>
+          </ExtensionPoint>
+        </DesktopFormFactor>
+      </Host>
+    </Hosts>
+
+    <Resources>
+      <bt:Images>
+        <bt:Image id="Icon.16x16" DefaultValue="https://YOUR_HOST_HERE/assets/icon-16.png" />
+        <bt:Image id="Icon.32x32" DefaultValue="https://YOUR_HOST_HERE/assets/icon-32.png" />
+        <bt:Image id="Icon.80x80" DefaultValue="https://YOUR_HOST_HERE/assets/icon-80.png" />
+      </bt:Images>
+      <bt:Urls>
+        <bt:Url id="Commands.Url" DefaultValue="https://YOUR_HOST_HERE/commands.html" />
+        <bt:Url id="Taskpane.Url" DefaultValue="https://YOUR_HOST_HERE/taskpane.html" />
+        <bt:Url id="GetStarted.LearnMoreUrl" DefaultValue="https://YOUR_HOST_HERE" />
+      </bt:Urls>
+      <bt:ShortStrings>
+        <bt:String id="GetStarted.Title" DefaultValue="Get started with My Icon Library" />
+        <bt:String id="IconLibraryGroup.Label" DefaultValue="Icon Library" />
+        <bt:String id="TaskpaneButton.Label" DefaultValue="My Icons" />
+      </bt:ShortStrings>
+      <bt:LongStrings>
+        <bt:String id="GetStarted.Description" DefaultValue="Open your personal icon library and click any icon to drop it onto the current slide." />
+        <bt:String id="TaskpaneButton.Tooltip" DefaultValue="Open your icon library" />
+      </bt:LongStrings>
+    </Resources>
+  </VersionOverrides>
+</OfficeApp>
