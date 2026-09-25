@@ -16,6 +16,13 @@
   box-sizing: border-box;
 }
 
+/* The native `hidden` attribute must always win over any display value
+   we set via classes below (e.g. .app / .empty-state both use
+   display: flex, which would otherwise silently override `hidden`). */
+[hidden] {
+  display: none !important;
+}
+
 html, body {
   height: 100%;
 }
