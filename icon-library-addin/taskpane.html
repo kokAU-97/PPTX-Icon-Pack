@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>My Icon Library</title>
-  <link rel="stylesheet" href="taskpane.css?v=5" />
+  <link rel="stylesheet" href="taskpane.css?v=6" />
   <script src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"></script>
 </head>
 <body>
@@ -32,26 +32,12 @@
 
     <main id="grid" class="grid" aria-label="Icon library"></main>
 
-    <div id="empty-state" class="empty-state" hidden>
-      <div class="empty-glyph" aria-hidden="true">
-        <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.6">
-          <rect x="3" y="3" width="7" height="7" rx="1.5" />
-          <rect x="14" y="3" width="7" height="7" rx="1.5" />
-          <rect x="3" y="14" width="7" height="7" rx="1.5" />
-          <rect x="14" y="14" width="7" height="7" rx="1.5" />
-        </svg>
-      </div>
-      <p class="empty-title">Your library is empty</p>
-      <p class="empty-body">Add SVG or PNG icons once — they'll stay here for every future presentation on this computer.</p>
-    </div>
-
-    <div id="no-results" class="empty-state" hidden>
-      <p class="empty-title">No icons match "<span id="no-results-query"></span>"</p>
-    </div>
+    <p id="empty-state" class="hint-line" hidden>Your library is empty — add SVG or PNG icons to get started.</p>
+    <p id="no-results" class="hint-line" hidden>No icons match "<span id="no-results-query"></span>".</p>
   </div>
 
   <div id="loading" class="loading">Loading your icon library…</div>
 
-  <script src="taskpane.js?v=5"></script>
+  <script src="taskpane.js?v=6"></script>
 </body>
 </html>
