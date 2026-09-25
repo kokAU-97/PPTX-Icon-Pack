@@ -250,10 +250,32 @@
       });
   }
 
+  var clearAllPendingTimer = null;
+
+  function resetClearAllButton() {
+    if (clearAllPendingTimer) {
+      clearTimeout(clearAllPendingTimer);
+      clearAllPendingTimer = null;
+    }
+    el.clearAllBtn.textContent = "Clear all";
+    el.clearAllBtn.classList.remove("btn-confirm");
+  }
+
   function clearAll() {
     if (!allIcons.length) return;
-    var ok = window.confirm("Remove all " + allIcons.length + " icons from your library? This can't be undone.");
-    if (!ok) return;
+
+    if (!clearAllPendingTimer) {
+      // First click: arm it. Native window.confirm() dialogs are
+      // unreliable inside Office task panes (some hosts silently block or
+      // auto-dismiss them), so we ask for confirmation in the page itself.
+      el.clearAllBtn.textContent = "Click again to confirm";
+      el.clearAllBtn.classList.add("btn-confirm");
+      clearAllPendingTimer = setTimeout(resetClearAllButton, 4000);
+      return;
+    }
+
+    // Second click within the window: actually clear.
+    resetClearAllButton();
     dbClear()
       .then(function () {
         setStatus("Library cleared.");

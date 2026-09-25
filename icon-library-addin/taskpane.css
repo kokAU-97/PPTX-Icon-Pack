@@ -135,6 +135,16 @@ body {
   color: var(--danger);
 }
 
+.btn-ghost.btn-confirm {
+  color: #fff;
+  background: var(--danger);
+  border-color: var(--danger);
+}
+
+.btn-ghost.btn-confirm:hover {
+  background: #a8341f;
+}
+
 /* ---------- Toolbar / search ---------- */
 
 .toolbar {
